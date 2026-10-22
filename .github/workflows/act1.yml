@@ -1,0 +1,17 @@
+name: prep01
+
+on: push
+
+jobs: 
+    prep_zero:
+      runs-on: ubuntu-latest
+      steps: 
+        - name: welcome
+          run: echo "welcome lets do this!!!"
+
+        - name: list files in reverse order
+          run: ls -ltr
+          
+        - name: read files
+          run: cat README.md  
+
