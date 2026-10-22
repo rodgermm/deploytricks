@@ -6,6 +6,10 @@ jobs:
     prep_zero:
       runs-on: ubuntu-latest
       steps: 
+        - name: Checkout Repo
+          uses: actions/checkout@v7
+
+          
         - name: welcome
           run: echo "welcome lets do this!!!"
 
