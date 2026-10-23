@@ -1,0 +1,27 @@
+name: context testing
+on: push
+
+
+jobs:
+  runs-on: ubuntu-latest
+  strategy:
+    matrix:
+      context:
+      - github
+      - env
+      - vars
+      - job
+      - steps
+      - runner
+      - secrets
+      - strategy
+      - matrix
+      - needs
+      - inputs
+  steps:
+  - uses: henrygriffiths/debug_action@v1
+    with:
+      contexts: ${{ matrix.context }}
+      vars_context: ${{ toJson(vars) }}
+      secrets_context: ${{ toJson(secrets) }}
+      needs_context: ${{ toJson(needs) }}
