@@ -9,19 +9,12 @@ jobs:
         - name: Checkout Repo
           uses: actions/checkout@v7
 
-        - name: Install Cowsay Application
-          run: sudo apt-get install cowsay -y
-
-        - name: Generate ASCII Artwork execute cmd
-          run: cowsay -f dragon "Run for cover, I am a dragon ... ROOOORR" >> dragon.txt
-          
-        - name: Verify file exists
-          run: grep -i "dragon" dragon.txt
-
-        - name: Read File
-          run: cat dragon.txt
-          
         - name: List Repo files
-          run:  ls -ltra
+          run:  ls -ltra          
+
+        - name: Executing ascii script
+          run: ./ascii-script.sh
+
+
 
 
