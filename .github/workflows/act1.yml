@@ -7,15 +7,16 @@ jobs:
       runs-on: ubuntu-latest
       steps: 
         - name: Checkout Repo
-          uses: actions/checkout@v7
+          uses: actions/checkout@v
 
-          
-        - name: welcome
-          run: echo "welcome lets do this!!!"
+        - name: list and Read
+          run: |
+               echo "welcome lets do this!!!"
+               ls -ltra
+               cat README.md 
 
-        - name: list files in reverse order
-          run: ls -ltr
+        - name: Generate ASCII Artwork
+          run: cowsay -f dragon "Run for cover, I am a Mwanda ... ROOOORR" >> dragon.txt
           
-        - name: read files
-          run: cat README.md  
+
 
