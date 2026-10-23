@@ -6,8 +6,8 @@ jobs:
     matrix-deploy:
         strategy:
           matrix:
-            os: [ubuntu-latest, ubuntu-24.04, ubuntu-20.04, windows-latest, mac-os]  
-            images: [alpine, hello-world, postgresql]
+            os: [ubuntu-latest, ubuntu-24.04, windows-latest]  
+            images: [alpine, hello-world]
         runs-on: ${{ matrix.os }}
         steps: 
           - name: Echo Docker details
