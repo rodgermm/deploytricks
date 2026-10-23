@@ -1,28 +1,30 @@
 name: context-testing
 
-on: push
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
 
 jobs:
-  dump_contexts_to_log:  
+  dump_contexts_to_log:
     runs-on: ubuntu-latest
-    strategy:
-        matrix:
-        context:
-        - github
-        - env
-        - vars
-        - job
-        - steps
-        - runner
-        - secrets
-        - strategy
-        - matrix
-        - needs
-        - inputs
     steps:
-    - uses: henrygriffiths/debug_action@v1
-      with:
-        contexts: ${{ matrix.context }}
-        vars_context: ${{ toJson(vars) }}
-        secrets_context: ${{ toJson(secrets) }}
-        needs_context: ${{ toJson(needs) }}
+      - name: Dump contexts
+        env:
+          GITHUB_CONTEXT:   ${{ toJson(github) }}
+          JOB_CONTEXT:      ${{ toJson(job) }}
+          STEPS_CONTEXT:    ${{ toJson(steps) }}
+          RUNNER_CONTEXT:   ${{ toJson(runner) }}
+          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+          MATRIX_CONTEXT:   ${{ toJson(matrix) }}
+          VARS_CONTEXT:     ${{ toJson(vars) }}
+          INPUTS_CONTEXT:   ${{ toJson(inputs) }}
+        run: |
+          for v in GITHUB JOB STEPS RUNNER STRATEGY MATRIX VARS INPUTS; do
+            echo "::group::${v} context"
+            printenv "${v}_CONTEXT"
+            echo "::endgroup::"
+          done

@@ -1,6 +1,6 @@
 name: matrix flow
 
-on: push
+#on: push
 
 jobs:
     matrix-deploy:
