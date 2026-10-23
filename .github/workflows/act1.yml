@@ -1,6 +1,6 @@
 name: prep01
 
-on: push
+#on: push
 
 jobs: 
     prep_zero:

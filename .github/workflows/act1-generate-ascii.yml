@@ -1,6 +1,6 @@
 name: generate ascii artwork
 
-on: push
+#on: push
 
 jobs: 
     build_job_1:
