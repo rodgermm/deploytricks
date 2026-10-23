@@ -1,6 +1,5 @@
-name: context testing
+name: context-testing
 on: push
-
 
 jobs:
   runs-on: ubuntu-latest
